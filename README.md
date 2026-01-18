@@ -22,3 +22,6 @@ This is a **sample project** using mock data.
 
 ## Schedule
 Runs daily at **10:00 AM IST** using Azure Pipelines cron scheduling.
+
+## Screenshots
+![pipeline-screenshot](https://github.com/vishwasracharya/daily-report-automation-azure-pipelines/blob/main/screenshots/pipeline-screenshot.png)
