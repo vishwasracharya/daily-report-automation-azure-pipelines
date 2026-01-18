@@ -1,0 +1,30 @@
+trigger: none
+
+schedules:
+- cron: "30 4 * * *"   # 04:30 UTC = 10:00 AM IST
+  displayName: Daily Automation Report
+  branches:
+    include:
+    - main
+  always: true
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: "3.10"
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: Install dependencies
+
+- script: |
+    python main.py
+  displayName: Run Daily Automation
+  env:
+    EMAIL_FROM: $(EMAIL_FROM)
+    EMAIL_TO: $(EMAIL_TO)
+    EMAIL_APP_PASSWORD: $(EMAIL_APP_PASSWORD)
